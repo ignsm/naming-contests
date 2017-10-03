@@ -17,9 +17,9 @@ import serverRender from './serverRender';
 
 server.get('/', (req, res) => {
   serverRender()
-    .then(content => {
+    .then(markup => {
       res.render('index', {
-        content
+        markup
       });
     })
     .catch(err => console.error(err));

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import ContestPreview from './ContestPreview';
-import axios from 'axios';
 import PropTypes from 'prop-types';
 
 class App extends Component {
@@ -10,16 +9,7 @@ class App extends Component {
   }
   state = {
     pageHeader: 'Naming Contest',
-    contests: this.props.initContests
-  }
-  componentDidMount() {
-    axios.get('/api/contests')
-      .then(resp => {
-        this.setState({
-          contests: resp.data.contests
-        });
-      })
-      .catch(err => console.error(err));
+    contests: this.props.contests
   }
 
   render() {
@@ -34,8 +24,8 @@ class App extends Component {
   }
 }
 
-Header.propTypes = {
-  initContests: PropTypes.array
+App.propTypes = {
+  contests: PropTypes.array
 };
 
 export default App;
