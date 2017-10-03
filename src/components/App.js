@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import ContestPreview from './ContestPreview';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 
 class App extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
   }
   state = {
-    pageHeader: 'Naming Contest'
+    pageHeader: 'Naming Contest',
+    contests: this.props.initContests
+  }
+  componentDidMount() {
+    axios.get('/api/contests')
+      .then(resp => {
+        this.setState({
+          contests: resp.data.contests
+        });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
     return (
       <div className='app'>
         <Header text={this.state.pageHeader} />
-        {this.props.contests.map(
+        {this.state.contests.map(
           contest => <ContestPreview key={contest.id} contest={contest} />
         )}
       </div>
@@ -23,8 +34,8 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  contests: PropTypes.array
+Header.propTypes = {
+  initContests: PropTypes.array
 };
 
 export default App;
