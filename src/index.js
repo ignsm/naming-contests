@@ -1,7 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById("root"));
+import data from './testData';
+import App from './components/App';
+
+
+ReactDOM.render(<App contests={data.contests} />, document.getElementById('root'));
 registerServiceWorker();
