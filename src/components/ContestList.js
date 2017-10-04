@@ -12,8 +12,11 @@ class ContestList extends Component{
   render(){
     return(
       <div className='contest-list'>
-        {this.state.contests.map(
-          contest => <ContestPreview key={contest.id} contest={contest} />
+        {Object.keys(this.state.contests).map(
+          contestId => <ContestPreview
+            onClick={this.props.onContestClick}
+            key={contestId}
+            contest={this.state.contests[contestId]} />
         )}
       </div>
     );
@@ -21,7 +24,8 @@ class ContestList extends Component{
 }
 
 ContestList.propTypes = {
-  contests: PropTypes.array
+  contests: PropTypes.object,
+  onContestClick: PropTypes.func
 };
 
 export default ContestList;

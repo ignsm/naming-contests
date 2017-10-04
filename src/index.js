@@ -7,7 +7,7 @@ import App from './components/App';
 axios.get('/api/contests')
   .then(resp => {
     ReactDOM.hydrate(
-      <App contests={resp.data.contests} />,
+      <App data={resp.data} />,
       document.getElementById('root')
     );
   })

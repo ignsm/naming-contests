@@ -8,7 +8,7 @@ const serverRender = () =>
   axios.get(`${config.serverUrl}/api/contests`)
     .then(resp => {
       return ReactDOMServer.renderToString(
-        <App contests={resp.data.contests} />
+        <App contests={resp.data} />
       );
     })
     .catch(err => console.error(err));
