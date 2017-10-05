@@ -1,31 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ContestPreview from './ContestPreview';
 import PropTypes from 'prop-types';
 
-class ContestList extends Component{
-  constructor(props){
-    super(props);
-  }
-  state = {
-    contests: this.props.contests
-  }
-  render(){
-    return(
-      <div className='contest-list'>
-        {Object.keys(this.state.contests).map(
-          contestId => <ContestPreview
-            onClick={this.props.onContestClick}
-            key={contestId}
-            contest={this.state.contests[contestId]} />
-        )}
-      </div>
-    );
-  }
-}
+const ContestList = ({ contests, onContestClick }) => (
+  <div className="ContestList">
+    {Object.keys(contests).map(contestId =>
+      <ContestPreview
+        key={contestId}
+        onClick={onContestClick}
+        {...contests[contestId]} />
+    )}
+  </div>
+);
 
-ContestList.propTypes = {
+ContestList.PropTypes = {
   contests: PropTypes.object,
-  onContestClick: PropTypes.func
+  onContestClick: PropTypes.func.isRequired,
 };
 
 export default ContestList;
