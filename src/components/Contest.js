@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 class Contest extends Component {
   render() {
@@ -17,9 +17,9 @@ class Contest extends Component {
   }
 }
 
-Contest.PropTypes = {
-  description: PropTypes.string.isRequired,
-  contestListClick: PropTypes.func.isRequired,
+Contest.propTypes = {
+  description: propTypes.string.isRequired,
+  contestListClick: propTypes.func.isRequired,
 };
 
 export default Contest;

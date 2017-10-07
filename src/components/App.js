@@ -3,7 +3,7 @@ import Header from './Header';
 import ContestList from './ContestList';
 import Contest from './Contest';
 import * as api from '../api';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 const pushState = (obj, url) =>
   window.history.pushState(obj, '', url);
@@ -82,8 +82,8 @@ class App extends React.Component {
   }
 }
 
-App.PropTypes = {
-  initialData: PropTypes.object.isRequired
+App.propTypes = {
+  initialData: propTypes.object.isRequired
 };
 
 export default App;
